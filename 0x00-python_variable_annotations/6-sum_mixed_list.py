@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """This file contains variables type annotation"""
-from typing import List, Any
+from typing import List, Union
 
 
-def sum_mixed_list(mxd_lst: List[Any]) -> float:
+def sum_mixed_list(mxd_lst: List[Union[int, float]]) -> float:
     """Sums a list of mixed numbers"""
     return sum(mxd_lst)
