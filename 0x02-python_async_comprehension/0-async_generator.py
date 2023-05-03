@@ -6,7 +6,7 @@ import random
 from typing import AsyncGenerator
 
 
-async def async_generator() -> AsyncGenerator[float, None]:
+async def async_generator() -> AsyncGenerator[float, None, None]:
     """Loops 10 times to yiels random float multiplied by 10"""
     for i in range(10):
         num = random.random() * 10
