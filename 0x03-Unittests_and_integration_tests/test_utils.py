@@ -33,6 +33,7 @@ class TestGetJson(unittest.TestCase):
     """TestCase"""
     @patch('utils.requests')
     def test_get_json(self, mock_requests):
+        """Method test_get_json"""
         mock_response = MagicMock()
         mock_response.status_code = 200
         mock_response.json.return_value = {'value': 'hello world'}
