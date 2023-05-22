@@ -34,7 +34,7 @@ class TestGetJson(unittest.TestCase):
     @patch('utils.requests')
     def test_get_json(self, mock_requests):
         mock_response = MagicMock()
-        mock_response.status_code = 200 
+        mock_response.status_code = 200
         mock_response.json.return_value = {'value': 'hello world'}
         mock_requests.get.return_value = mock_response
         result = get_json('https://bezawork-pr.github.io/hello_world.html')
