@@ -4,9 +4,10 @@ method to test that the method returns
 what it is supposed to"""
 import unittest
 from utils import access_nested_map
+from parameterized import parameterized
 
 
-class TestAccessNestedMap(unittes.TestCase):
+class TestAccessNestedMap(unittest.TestCase):
     """TestCase"""
     @parameterized.expand([
         ({"a": 1}, ("a",), 1),
