@@ -3,7 +3,7 @@
 method to test that the method returns
 what it is supposed to"""
 import unittest
-from utils import access_nested_map, get_json
+from utils import access_nested_map, get_json, memoize
 from parameterized import parameterized
 from unittest.mock import patch, MagicMock
 
@@ -40,6 +40,26 @@ class TestGetJson(unittest.TestCase):
         mock_requests.get.return_value = mock_response
         result = get_json('https://bezawork-pr.github.io/hello_world.html')
         self.assertEqual(result, {'value': 'hello world'})
+
+
+class TestMemoize(unittest.TestCase):
+    """TestCase"""
+    def test_memoize(self):
+        class TestClass:
+            def a_method(self):
+                return 42
+
+            @memoize
+            def a_property(self):
+                return self.a_method()
+        with patch.object(TestClass, 'a_method', return_value = 42) as mockMethod:
+            test = TestClass()
+            test.a_property
+            test.a_property
+            mockMethod.assert_called_once()
+
+
+
 
 
 if __name__ == "__main__":
