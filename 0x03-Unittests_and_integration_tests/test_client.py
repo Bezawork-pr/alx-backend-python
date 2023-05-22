@@ -31,5 +31,24 @@ class TestGithubOrgClient(unittest.TestCase):
             self.assertEqual(test._public_repos_url, mockMyP.return_value)
 
 
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    """class TestIntegrationGithubOrgClient"""
+    def test_public_repos(self):
+        """test_public_repos"""
+        url = 'client.GithubOrgClient.public_repos'
+        with mock.patch(url, new_callable=mock.PropertyMock) as mockMyP:
+            mockMyP.return_value = {"resp": "alx"}
+            test = GithubOrgClient("alx")
+            self.assertEqual(test.public_repos, mockMyP.return_value)
+
+    def test_public_repos_with_license(self):
+        """test_public_repos_with_license"""
+        url = 'client.GithubOrgClient.public_repos'
+        with mock.patch(url, new_callable=mock.PropertyMock) as mockMyP:
+            mockMyP.return_value = {"resp": "alx", }
+            test = GithubOrgClient("alx")
+            self.assertEqual(test.public_repos, mockMyP.return_value)
+
+
 if __name__ == "__main__":
     unittest.main()
